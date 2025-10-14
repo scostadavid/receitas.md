@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import type { RecipePath, RecipeFrontmatter } from '../../types/recipe';
+
+export async function getStaticPaths(): Promise<RecipePath[]> {
+  const recipeModules = import.meta.glob('../../content/recipes/**/*.md', { eager: true });
+
+  const allRecipes = Object.entries(recipeModules).map(([filePath, module]: [string, any]) => {
+    const parts = filePath.split('/');
+    const author = parts[parts.length - 2];
+    const slug = parts[parts.length - 1].replace('.md', '');
+    const frontmatter = module.frontmatter as RecipeFrontmatter;
+    const Content = module.default;
+
+    return { filePath, author, slug, frontmatter, Content };
+  });
+
+  const recipesCount = allRecipes.length;
+
+  return allRecipes.map(r => ({
+    params: { author: r.author, slug: r.slug },
+    props: {
+      frontmatter: r.frontmatter,
+      Content: r.Content,
+      recipesCount,
+    },
+  }));
+}
+
+const { frontmatter, Content, recipesCount } = Astro.props;
+---
+
+
+<Layout title={`${frontmatter.title} - Receitas Markdown`}>
+  <Navbar recipesCount={recipesCount} lastUpdate="2025-10-13" />
+
+  <main class="max-w-4xl mx-auto p-4">
+    <article class="bg-[#0f0f0f] border-2 border-dashed border-[#262626] p-6">
+      <h1 class="text-3xl font-bold mb-4">{frontmatter.title}</h1>
+
+      <div class="gap-4 text-sm text-[#a3a3a3] mb-6 pb-4 border-b border-dashed border-[#262626]">
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <div>🕐 {frontmatter.time}</div>
+          <div>👥 {frontmatter.serves}</div>
+          <div>👨‍🍳 {frontmatter.difficulty}</div>
+          <span>👤 {frontmatter.author}</span>
+        </div>
+        <p class="mb-2">{frontmatter.description}</p>
+
+        <div class="flex flex-wrap gap-2">
+          {frontmatter.tags.map((tag: string) => (
+            <span class="text-sm text-blue-600">#{tag}</span>
+          ))}
+        </div>
+      </div>
+
+
+      <!-- Aqui estilizamos o markdown usando Tailwind + prose -->
+      <div class="prose prose-invert max-w-none text-[#a3a3a3]">
+        <Content />
+      </div>
+
+      <div class="mt-8 pt-4 border-t border-dashed border-[#262626]">
+        <a href="/" class="text-blue-600 hover:text-blue-500 text-sm">← Voltar para o índice</a>
+      </div>
+    </article>
+
+    <Footer />
+  </main>
+</Layout>

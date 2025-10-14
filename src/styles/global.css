@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* opcional: fonte mono global */
+html, body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* src/styles/global.css */
+.prose h1 { @apply text-3xl font-bold mt-6 mb-4; }
+.prose h2 { @apply text-2xl font-semibold mt-5 mb-3; }
+.prose p  { @apply leading-relaxed mb-3; }
+.prose li { @apply mb-1; }
+.prose a  { @apply text-blue-600 hover:text-blue-500; }

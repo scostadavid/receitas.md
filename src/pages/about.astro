@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const recipeModules = import.meta.glob('../content/recipes/**/*.md', { eager: true });
+
+const recipes = Object.entries(recipeModules).map(([filePath, module]: [string, any]) => ({
+  ...module.frontmatter,
+  Content: module.default, 
+  slug: filePath.split('/').pop()?.replace('.md', '') ?? '',
+}));
+
+const recipesCount = recipes.length;
+---
+
+
+<Layout title="Sobre - Receitas Markdown">
+  <Navbar recipesCount={recipesCount} lastUpdate="2025-10-13" />
+  
+  <main class="max-w-4xl mx-auto p-4">
+    <article class="prose prose-invert max-w-none bg-[#0f0f0f] border-2 border-dashed border-[#262626] p-6 font-mono">
+      <h1 class="text-2xl font-bold mb-6 text-[#ededed]">📝 README.md</h1>
+
+      <section class="mb-8">
+        <h2 class="text-lg font-bold text-[#ededed] mb-2">## Sobre o Projeto</h2>
+        <p class="text-[#a3a3a3] leading-relaxed">
+          O <strong>Receitas Markdown</strong> é um repositório colaborativo de receitas culinárias, com inspiração em arquivos
+          Markdown. Cada receita é um `.md` separado, simples de editar e contribuir.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-lg font-bold text-[#ededed] mb-2">## Como Colaborar</h2>
+        <p class="text-[#a3a3a3]">
+          🚧 Em construção — em breve, qualquer pessoa poderá enviar receitas diretamente pelo repositório.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-lg font-bold text-[#ededed] mb-2">## Tecnologia</h2>
+        <p class="text-[#a3a3a3]">
+          Este projeto foi desenvolvido com <strong>Astro</strong> e <strong>Tailwind CSS</strong>, priorizando
+          simplicidade e foco no conteúdo.  
+          O design “brega” com bordas pontilhadas e fonte mono é proposital, uma homenagem ao visual de
+          arquivos aos clássicos READMEs.
+        </p>
+      </section>
+
+      <footer class="pt-6 border-t border-dashed border-[#262626]">
+        <Footer />
+      </footer>
+    </article>
+  </main>
+</Layout>

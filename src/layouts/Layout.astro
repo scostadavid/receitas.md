@@ -1,22 +1,38 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Um repositório colaborativo de receitas em formato markdown 🍳✨" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-background font-mono">
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --card: #0f0f0f;
+    --border: #262626;
+    --muted-foreground: #a3a3a3;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
 </style>
