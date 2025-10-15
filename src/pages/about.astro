@@ -65,6 +65,31 @@ const recipesCount = recipes.length;
           </ul>
 
           <a href="https://raw.githubusercontent.com/scostadavid/receitas.md/refs/heads/main/src/content/recipes/scostadavid/salada-de-ovo-com-torrada.md" target="_blank" rel="noreferrer noopener">Arquivo modelo</a>
+
+          <p>Após criar sua receita, siga os passos para enviá-la:</p>
+
+<ol class="list-decimal list-inside space-y-2">
+  <li>Crie uma <strong>nova branch</strong> a partir da branch <code>develop</code> com um nome descritivo.  
+    <br />
+    <em>Exemplo:</em> <code>git checkout -b add/salada-de-ovo</code>
+  </li>
+  <li>Adicione seu arquivo e faça o commit:
+    <br />
+    <code>git add .</code><br />
+    <code>git commit -m "Add recipe: salada de ovo com torrada"</code>
+  </li>
+  <li>Envie sua branch para o seu fork:
+    <br />
+    <code>git push origin add/salada-de-ovo</code>
+  </li>
+  <li>No GitHub, abra um <strong>Pull Request</strong> da sua branch para a branch <code>dev</code> do repositório oficial.</li>
+</ol>
+
+<p>
+  Após revisão, a receita será mergeada em <code>dev</code> e incluída na próxima atualização do site.  
+  🎉 Obrigado por contribuir!
+</p>
+
       </section>
 
         <Footer />

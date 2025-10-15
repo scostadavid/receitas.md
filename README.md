@@ -1,46 +1,43 @@
-# Astro Starter Kit: Basics
+# 🧂 Markdown Recipes
+A collaborative repository of culinary recipes written in Markdown.  
+Each recipe is a simple .md file: easy to read, edit, and share.  
 
-```sh
-npm create astro@latest -- --template basics
-```
+## ⚙️ Technology
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with Astro + Tailwind CSS, prioritizing simplicity and focus on content.  
 
-## 🚀 Project Structure
+## 🧑‍🍳 How to Contribute
+Want to add your own recipes? Follow these steps:
 
-Inside of your Astro project, you'll see the following folders and files:
+Clone this repository or make a fork.  
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Inside content/recipes, create a folder using your GitHub username.  
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Create a Markdown file for your recipe inside your folder.
 
-## 🧞 Commands
+The file name should be the recipe title in lowercase,  
+without accents and using hyphens between words.
 
-All commands are run from the root of the project, from a terminal:
+Examples:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- carrot-cake.md
+- egg-salad-with-toast.md
 
-## 👀 Want to learn more?
+## 📦 Recipe Structure
+Each recipe should include four main parts:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Frontmatter: metadata such as title, author, and basic info  
+2. Ingredients: list of what you need  
+3. Preparation: step-by-step instructions  
+4. Chef’s Notes: personal comments or tips about your recipe
+
+You can use this example file as a reference:  
+👉 [salada-de-ovo-com-torrada.md](https://raw.githubusercontent.com/scostadavid/receitas.md/refs/heads/main/src/content/recipes/scostadavid/salada-de-ovo-com-torrada.md)
+
+## ✨ Before Submitting
+
+Before opening your Pull Request:
+1. Check that your Markdown file looks clean and consistent.  
+2. Ensure your frontmatter fields are complete and valid.  
+3. Use correct folder and file naming conventions.
+4. Once ready, submit a Pull Request at the development branch, your recipe will be reviewed and added to the site.
