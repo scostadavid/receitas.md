@@ -16,6 +16,7 @@ description: Café da manhã sem muito esforço com gostinho de pré treino
 - 4 fatias de pão integral ou de sua preferência  
 - 1 colher (sopa) de maionese ou iogurte natural  
 - Sal e pimenta a gosto  
+- 1 colher (sopa) de vinagre de maçã (opcional)
 - Salsinha ou cebolinha picada (opcional)
 
 ## Modo de preparo
