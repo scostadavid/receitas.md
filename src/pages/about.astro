@@ -14,7 +14,6 @@ const recipes = Object.entries(recipeModules).map(([filePath, module]: [string, 
 const recipesCount = recipes.length;
 ---
 
-
 <Layout title="Sobre - Receitas Markdown">
   <Navbar recipesCount={recipesCount} lastUpdate="2025-10-13" />
   
@@ -31,25 +30,44 @@ const recipesCount = recipes.length;
       </section>
 
       <section class="mb-8">
-        <h2 class="text-lg font-bold text-[#ededed] mb-2">## Como Colaborar</h2>
-        <p class="text-[#a3a3a3]">
-          🚧 Em construção — em breve, qualquer pessoa poderá enviar receitas diretamente pelo repositório.
-        </p>
-      </section>
-
-      <section class="mb-8">
         <h2 class="text-lg font-bold text-[#ededed] mb-2">## Tecnologia</h2>
         <p class="text-[#a3a3a3]">
           Este projeto foi desenvolvido com <strong>Astro</strong> e <strong>Tailwind CSS</strong>, priorizando
           simplicidade e foco no conteúdo.  
           O design “brega” com bordas pontilhadas e fonte mono é proposital, uma homenagem ao visual de
-          arquivos aos clássicos READMEs.
+          arquivos e READMEs clássicos.
         </p>
       </section>
 
-      <footer class="pt-6 border-t border-dashed border-[#262626]">
+      <section class="mb-8">
+        <h2 class="text-lg font-bold text-[#ededed] mb-2">## Como Colaborar</h2>
+          <p>Para contribuir com novas receitas, siga os passos abaixo:</p>
+
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Clone este repositório ou faça um <strong>fork</strong>.</li>
+            <li>Dentro da pasta <code>content/recipes</code>, crie um diretório com o <strong>seu nome de usuário do GitHub</strong>.</li>
+            <li>Crie um arquivo Markdown para a receita dentro do seu diretório.  
+              O nome do arquivo deve ser o título da receita <strong>em minúsculas</strong>,  
+              separado por hifens e sem acentos ou caracteres especiais.
+              <br />
+              <em>Exemplos:</em>  
+              <code>bolo-de-cenoura.md</code> • <code>salada-de-ovo-com-torrada.md</code>
+            </li>
+          </ol>
+
+          <p>Cada receita deve conter quatro partes principais:</p>
+
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Frontmatter</strong>: metadados da receita, como título, autor e informações básicas.</li>
+            <li><strong>Ingredientes</strong>: lista dos itens necessários para preparar a receita.</li>
+            <li><strong>Modo de preparo</strong>: explicação passo a passo, podendo incluir seções como <code>### Molho</code>, <code>### Massa</code> etc.</li>
+            <li><strong>Notas do chef</strong>: comentários e observações pessoais sobre a receita.</li>
+          </ul>
+
+          <a href="https://raw.githubusercontent.com/scostadavid/receitas.md/refs/heads/main/src/content/recipes/scostadavid/salada-de-ovo-com-torrada.md" target="_blank" rel="noreferrer noopener">Arquivo modelo</a>
+      </section>
+
         <Footer />
-      </footer>
     </article>
   </main>
 </Layout>
