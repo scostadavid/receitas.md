@@ -19,7 +19,9 @@ export async function getStaticPaths() {
     params: { author },
     props: {
       author,
-      recipes: allRecipes.filter(r => r.author === author),
+      recipes: allRecipes
+        .filter(r => r.author === author)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
       recipesCount: allRecipes.length,
     },
   }));

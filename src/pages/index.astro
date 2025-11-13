@@ -5,11 +5,13 @@ import Footer from '../components/Footer.astro';
 
 const recipeModules = import.meta.glob('../content/recipes/**/*.md', { eager: true });
 
-const recipes = Object.entries(recipeModules).map(([filePath, module]: [string, any]) => ({
-  ...module.frontmatter,
-  Content: module.default, 
-  slug: filePath.split('/').pop()?.replace('.md', '') ?? '',
-}));
+const recipes = Object.entries(recipeModules)
+  .map(([filePath, module]: [string, any]) => ({
+    ...module.frontmatter,
+    Content: module.default,
+    slug: filePath.split('/').pop()?.replace('.md', '') ?? '',
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const lastUpdate = recipes
   .map(r => new Date(r.date))
